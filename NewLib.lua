@@ -607,6 +607,7 @@ function library:CreateWindow(name, size, hidebutton)
             sector.Label = Instance.new("TextLabel", sector.Main)
             sector.Label.AnchorPoint = Vector2.new(0,0.5)
             sector.Label.Position = UDim2.fromOffset(12, -1)
+            print (sector.Main.Size)
             sector.Label.Size = UDim2.fromOffset(math.clamp(textservice:GetTextSize(sector.name, 15, window.theme.font, Vector2.new(200,300)).X + 13, 0, sector.Main.Size.X.Offset), 0, size.Y)
             sector.Label.BackgroundTransparency = 1
             sector.Label.BorderSizePixel = 0
