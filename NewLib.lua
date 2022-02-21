@@ -62,10 +62,12 @@ if library.theme.cursor and Drawing then
             end
         end)
         
-        game:GetService("RunService").RenderStepped:Connect(function()
-            uis.OverrideMouseIconBehavior = Enum.OverrideMouseIconBehavior.ForceHide
-            library.cursor.Visible = uis.MouseEnabled and (uis.MouseIconEnabled or game:GetService("GuiService").MenuIsOpen)
-        end)
+        task.spawn(function()
+	 while wait() do
+	     uis.OverrideMouseIconBehavior = Enum.OverrideMouseIconBehavior.ForceHide
+	     library.cursor.Visible = uis.MouseEnabled and (uis.MouseIconEnabled or game:GetService("GuiService").MenuIsOpen)
+	 end
+	end)
     elseif not success and library.cursor then
         library.cursor:Remove()
     end
@@ -1244,17 +1246,19 @@ function library:CreateWindow(name, theme, size, hidebutton)
                             return
                         end)
     
-                        runservice.RenderStepped:Connect(function()
-                            if dropdown.multichoice and dropdown:isSelected(v) or dropdown.values[1] == v then
-                                Item.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
-                                Item.TextColor3 = window.theme.accentcolor
-                                Item.Text = " " .. v
-                            else
-                                Item.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-                                Item.TextColor3 = Color3.fromRGB(255, 255, 255)
-                                Item.Text = v
-                            end
-                        end)
+                       task.spawn(function()
+			while wait() do
+			    if dropdown.multichoice and dropdown:isSelected(v) or dropdown.values[1] == v then
+				Item.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
+				Item.TextColor3 = window.theme.accentcolor
+				Item.Text = " " .. v
+			    else
+				Item.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+				Item.TextColor3 = Color3.fromRGB(255, 255, 255)
+				Item.Text = v
+			    end			
+			end
+                       end)
     
                         table.insert(dropdown.items, v)
                         dropdown.ItemsFrame.Size = UDim2.fromOffset(dropdown.Main.Size.X.Offset, math.clamp(#dropdown.items * Item.AbsoluteSize.Y, 20, 156) + 4)
@@ -2683,7 +2687,8 @@ function library:CreateWindow(name, theme, size, hidebutton)
                             return
                         end)
     
-                        runservice.RenderStepped:Connect(function()
+                       task.spawn(function()
+			while wait() do
                             if dropdown.multichoice and dropdown:isSelected(v) or dropdown.values[1] == v then
                                 Item.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
                                 Item.TextColor3 = window.theme.accentcolor
@@ -2693,6 +2698,7 @@ function library:CreateWindow(name, theme, size, hidebutton)
                                 Item.TextColor3 = Color3.fromRGB(255, 255, 255)
                                 Item.Text = v
                             end
+			end
                         end)
     
                         table.insert(dropdown.items, v)
@@ -3233,7 +3239,8 @@ function library:CreateWindow(name, theme, size, hidebutton)
                         return
                     end)
 
-                    runservice.RenderStepped:Connect(function()
+                       task.spawn(function()
+			while wait() do
                         if dropdown.multichoice and dropdown:isSelected(v) or dropdown.values[1] == v then
                             Item.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
                             Item.TextColor3 = window.theme.accentcolor
@@ -3243,6 +3250,7 @@ function library:CreateWindow(name, theme, size, hidebutton)
                             Item.TextColor3 = Color3.fromRGB(255, 255, 255)
                             Item.Text = v
                         end
+			end
                     end)
 
                     table.insert(dropdown.items, v)
