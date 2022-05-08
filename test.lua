@@ -26,7 +26,7 @@ repeat wait() until game:IsLoaded()
 		getgenv().library:Unload()
 	end
 
-	local library = {design = getgenv().design == "kali" and "kali" or "uwuware", tabs = {}, draggable = true, flags = {}, title = "cware | version 1.0.0.0", open = false, mousestate = inputService.MouseIconEnabled, popup = nil, instances = {}, connections = {}, options = {}, notifications = {}, tabSize = 0, theme = {}, foldername = "uw_configs", fileext = ".uw"}
+	local library = {design = getgenv().design == "kali" and "kali" or "cware | version 1.0.0.0", tabs = {}, draggable = true, flags = {}, title = "cware | version 1.0.0.0", open = false, mousestate = inputService.MouseIconEnabled, popup = nil, instances = {}, connections = {}, options = {}, notifications = {}, tabSize = 0, theme = {}, foldername = "uw_configs", fileext = ".uw"}
 	getgenv().library = library
 
 	--Locals
@@ -2542,14 +2542,8 @@ repeat wait() until game:IsLoaded()
 			Parent = self.main
 		})
 
-		self.cursor = self:Create("Triangle", {
-			Color = Color3.fromRGB(180, 180, 180),
-			Transparency = 0.6,
-		})
-		self.cursor1 = self:Create("Triangle", {
-			Color = Color3.fromRGB(240, 240, 240),
-			Transparency = 0.6,
-		})
+		self.cursor = false
+		self.cursor1 = false
 
 		self.tooltip = self:Create("TextLabel", {
 			ZIndex = 2,
