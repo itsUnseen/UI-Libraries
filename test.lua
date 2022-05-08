@@ -2796,3 +2796,5 @@ repeat wait() until game:IsLoaded()
 			end
 		end
 	end})
+
+return getgenv().library
