@@ -2454,17 +2454,17 @@ repeat wait() until game:IsLoaded()
 	function library:Close()
 		self.open = not self.open
 		if self.open then
-			inputService.MouseIconEnabled = false
+			inputService.MouseIconEnabled = true
 		else
-			inputService.MouseIconEnabled = self.mousestate
+			inputService.MouseIconEnabled = true
 		end
 		if self.main then
 			if self.popup then
 				self.popup:Close()
 			end
 			self.main.Visible = self.open
-			self.cursor.Visible  = self.open
-			self.cursor1.Visible  = self.open
+			self.cursor.Visible  = false
+			self.cursor1.Visible  = false
 		end
 	end
 
@@ -2542,8 +2542,15 @@ repeat wait() until game:IsLoaded()
 			Parent = self.main
 		})
 
-		self.cursor = false
-		self.cursor1 = false
+		self.cursor = self:Create("Triangle", {
+			Color = Color3.fromRGB(180, 180, 180),
+			Transparency = 0.6,
+		})
+		self.cursor1 = self:Create("Triangle", {
+			Color = Color3.fromRGB(240, 240, 240),
+			Transparency = 0.6,
+		})
+
 
 		self.tooltip = self:Create("TextLabel", {
 			ZIndex = 2,
