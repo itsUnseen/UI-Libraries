@@ -2936,7 +2936,6 @@ repeat wait() until game:IsLoaded()
 	local PlayerServ = game:GetService"Players"
 	local Client = PlayerServ["LocalPlayer"]
 	local Mouse = Client:GetMouse()
-	local Settings = settings()
 	local Players = {}
 	local Camera = workspace.CurrentCamera
 	local WTSP = Camera.WorldToScreenPoint
