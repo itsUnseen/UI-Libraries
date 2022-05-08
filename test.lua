@@ -2852,7 +2852,7 @@ repeat wait() until game:IsLoaded()
 			Position = UDim2.new(0, 4, 0, 0),
 			Size = UDim2.new(0, 70, 0, 16),
 			BackgroundTransparency = 1,
-			Text = "uwuware",
+			Text = "cware | version 1.0.0.0",
 			Font = Enum.Font.Gotham,
 			TextColor3 = Color3.fromRGB(255, 65, 65),
 			TextSize = 16,
