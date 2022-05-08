@@ -4198,24 +4198,6 @@ repeat wait() until game:IsLoaded()
 		MiscMain:AddSlider({text = "Set FPS Cap", min = 60, max = 300, callback = function(Value) setfpscap(Value) end})
 	end
 	local Lagging
-	MiscMain:AddToggle({text = "Lag Switch", callback = function()
-		Lagging = false
-		Settings.Network.IncomingReplicationLag = 0
-	end}):AddSlider({text = "Timeout", flag = "Lag Switch Timeout", min = 1, max = 10, float = 0.1, suffix = "s"}):AddBind({callback = function()
-		if library.flags["Lag Switch"] then
-			Lagging = not Lagging
-			Settings.Network.IncomingReplicationLag = Lagging and 1000 or 0
-			if Lagging then
-				local LagStart = tick()
-				while Lagging do
-					wait(1)
-					if tick() - LagStart >= library.flags["Lag Switch Timeout"] then
-						library.options["Lag Switch"].callback()
-					end
-				end
-			end
-		end
-	end})
 
 	local PlayerList = MiscColumn1:AddSection"Player List"
 	PlayerList:AddList({flag = "Player List", textpos = 2, skipflag = true, max = 10, values = (function() local t = {} for _, Player in next, PlayerServ:GetPlayers() do if Player ~= Client then table.insert(t, Player.Name) end end return t end)(), callback = function(Value)
