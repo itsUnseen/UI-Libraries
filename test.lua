@@ -5910,10 +5910,6 @@ repeat wait() until game:IsLoaded()
 
 	library.flagprefix = nil
 
-	if VisualsTab.canInit then
-		AddTracker(PlayerServ)
-	end
-
 	--Always running
 	library:AddConnection(runService.RenderStepped, function()
 		local MX, MY = Mouse.X, Mouse.Y + 36
