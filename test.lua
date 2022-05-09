@@ -610,7 +610,7 @@ repeat wait() until game:IsLoaded()
 						if Loop then Loop:Disconnect() option.callback(true, 0) end
 						Loop = library:AddConnection(runService.RenderStepped, function(step)
 							if not inputService:GetFocusedTextBox() then
-								option.callback(nil, step)
+								option.callback(true, step)
 							end
 						end)
 					end
@@ -625,7 +625,7 @@ repeat wait() until game:IsLoaded()
 						if Loop then
 							Loop:Disconnect()
 							library.flags[option.flag] = false
-							option.callback(true, 0)
+							option.callback(false, 0)
 						end
 					end
 				end
