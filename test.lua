@@ -1,6 +1,7 @@
 
 local assets = {6183930112, 6071575925, 6071579801, 6073763717, 3570695787, 5941353943, 4155801252, 2454009026, 5553946656, 4155801252, 4918373417, 3570695787, 2592362371}
 local cprovider = Game:GetService"ContentProvider"
+local version = game:HttpGet("https://raw.githubusercontent.com/itsUnseen/cware/main/version.lua")
 for _, v in next, assets do
 	cprovider:Preload("rbxassetid://" .. v)
 end
@@ -26,7 +27,7 @@ repeat wait() until game:IsLoaded()
 		getgenv().library:Unload()
 	end
 
-	local library = {design = getgenv().design == "kali" and "kali" or "cware | version 1.0.0.0", tabs = {}, draggable = true, flags = {}, title = "cware | version 1.0.0.0", open = false, mousestate = inputService.MouseIconEnabled, popup = nil, instances = {}, connections = {}, options = {}, notifications = {}, tabSize = 0, theme = {}, foldername = "uw_configs", fileext = ".uw"}
+	local library = {design = getgenv().design == "kali" and "kali" or "cware | version " .. version, tabs = {}, draggable = true, flags = {}, title = "cware | version  " .. version, open = false, mousestate = inputService.MouseIconEnabled, popup = nil, instances = {}, connections = {}, options = {}, notifications = {}, tabSize = 0, theme = {}, foldername = "uw_configs", fileext = ".uw"}
 	getgenv().library = library
 
 	--Locals
