@@ -1,8 +1,7 @@
 
 local assets = {6183930112, 6071575925, 6071579801, 6073763717, 3570695787, 5941353943, 4155801252, 2454009026, 5553946656, 4155801252, 4918373417, 3570695787, 2592362371}
 local cprovider = Game:GetService"ContentProvider"
-local version = game:HttpGet("https://raw.githubusercontent.com/itsUnseen/cware/main/version.lua")
-version = version:Sub(1, #version - 1)
+local version = "1.1.0.0"
 for _, v in next, assets do
 	cprovider:Preload("rbxassetid://" .. v)
 end
