@@ -2864,12 +2864,6 @@ repeat wait() until game:IsLoaded()
 	local Client = PlayerServ["LocalPlayer"]
 	local Mouse = Client:GetMouse()
 	local Players = {}
-	local Camera = workspace.CurrentCamera
-	local WTSP = Camera.WorldToScreenPoint
-	local WTVP = Camera.WorldToViewportPoint
-	local CameraSpoof = {
-		FieldOfView = Camera.FieldOfView
-	}
 	local Lighting = game:GetService"Lighting"
 	local LightingSpoof = {
 		ClockTime = Lighting.ClockTime,
@@ -3579,11 +3573,6 @@ repeat wait() until game:IsLoaded()
 				LightingSpoof[i] = v
 				v = library.flags["Color Shift"] and library.flags["Color Shift Top"] or v
 			end
-		elseif t == Camera then
-			if i == "FieldOfView" then
-				CameraSpoof[i] = v
-				v = (library.flags["FOV Zoom Enabled"] and library.flags["FOV Zoom Key"] and (50 - library.flags["FOV Zoom Amount"])) or library.flags["FOV Changer"] and (library.flags["Dynamic Custom FOV"] and (CameraSpoof.FieldOfView + library.flags["FOV Amount"]) or library.flags["FOV Amount"]) or v
-			end
 		end
 
 		return Old_new(t, i, v)
@@ -3620,10 +3609,6 @@ repeat wait() until game:IsLoaded()
 		if t == Lighting then
 			if i == "ClockTime" or i == "Brightness" or i == "Ambient" or i == "OutdoorAmbient" or i == "ColorShift_Top" then
 				return LightingSpoof[i]
-			end
-		elseif t == Camera then
-			if i == "FieldOfView" then
-				return CameraSpoof[i]
 			end
 		end
 
@@ -5859,7 +5844,6 @@ repeat wait() until game:IsLoaded()
 		Lighting.OutdoorAmbient = library.flags["Ambient Lighting"] and library.flags["Outdoor Ambient"] or LightingSpoof.OutdoorAmbient
 		Lighting.ColorShift_Top = library.flags["Color Shift"] and library.flags["Color Shift Top"] or LightingSpoof.ColorShift_Top
 
-		Camera.FieldOfView = (library.flags["FOV Zoom Enabled"] and library.flags["FOV Zoom Key"] and (50 - library.flags["FOV Zoom Amount"])) or library.flags["FOV Changer"] and (library.flags["Dynamic Custom FOV"] and (CameraSpoof.FieldOfView + library.flags["FOV Amount"]) or library.flags["FOV Amount"]) or CameraSpoof.FieldOfView
 	end)
 
 	library:Init()
