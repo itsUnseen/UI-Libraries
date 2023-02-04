@@ -2477,7 +2477,11 @@ repeat wait() until game:IsLoaded()
 			self.base.Parent = script.Parent.Parent
 		elseif syn then
 			pcall(function() syn.protect_gui(self.base) end)
-			self.base.Parent = game:GetService"CoreGui"
+			if (game.GameId ~= 3150475059) then
+				self.base.Parent = game:GetService"CoreGui"
+			else
+				self.base.Parent = game:GetService("Players").LocalPlayer.PlayerGui
+			end
 		end
 
 		self.main = self:Create("ImageButton", {
