@@ -2479,6 +2479,7 @@ repeat wait() until game:IsLoaded()
 			pcall(function() syn.protect_gui(self.base) end)
 			if (game.GameId ~= 3150475059) then
 				self.base.Parent = game:GetService"CoreGui"
+				print ("OLD")
 			else
 				self.base.Parent = game:GetService("Players").LocalPlayer.PlayerGui
 			end
